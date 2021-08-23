@@ -37,11 +37,15 @@
     "category-general"
   ],
   "dependencies": {
+    "@nativescript-community/ui-webview": "^1.2.5",
     "@nativescript/core": "~8.0.0",
+    "@nativescript/geolocation": "^7.2.0",
     "@nativescript/theme": "~3.0.1",
-    "nativescript-vue": "~2.9.0"
+    "nativescript-vue": "~2.9.0",
+    "nativescript-webview-interface": "^1.4.4"
   },
   "devDependencies": {
+    "@nativescript/android": "8.0.0",
     "@nativescript/webpack": "beta",
     "nativescript-vue-template-compiler": "~2.9.0",
     "sass": "^1.32.8"
