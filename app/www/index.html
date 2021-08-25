@@ -29,16 +29,23 @@
 
             // https://stackoverflow.com/questions/12735303/how-to-change-the-map-center-in-leaflet-js
             window.nsWebViewBridge.on('updateCoordinate', data => {
-                mymap.panTo(new L.LatLng(data.coordinates.lat, data.coordinates.lng))
+                mymap.panTo(new L.LatLng(data.coordinates.lat, data.coordinates.lng));
+                L.marker([data.coordinates.lat, data.coordinates.lng]).addTo(mymap)
+                    .bindPopup(data.name)
+                    .openPopup();
             })
-        }, 200);
+        }, 500);
 
         function setMap(data) {
             mymap.setView([data.coordinates.lat, data.coordinates.lng], data.zoom);
-            var OpenStreetMap_Mapnik = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; OpenStreetMap'
             }).addTo(mymap);
+
+            L.marker([data.coordinates.lat, data.coordinates.lng]).addTo(mymap)
+                .bindPopup('Your location')
+                .openPopup();
 
             mymap.on('zoomanim', (event) => {
                 window.nsWebViewBridge.emit('zoomin', event)

@@ -124,7 +124,7 @@ export default {
             lat: data.FIELD7,
             lng: data.FIELD8,
           },
-          zoom: 15,
+          name: data.FIELD2,
         });
       }
     },
