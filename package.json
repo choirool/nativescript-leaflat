@@ -41,6 +41,7 @@
     "@nativescript/core": "~8.0.0",
     "@nativescript/geolocation": "^7.2.0",
     "@nativescript/theme": "~3.0.1",
+    "nativescript-ui-autocomplete": "^8.0.0",
     "nativescript-vue": "~2.9.0",
     "nativescript-webview-interface": "^1.4.4"
   },
