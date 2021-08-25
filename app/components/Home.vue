@@ -85,8 +85,7 @@ export default {
       }
 
       view.on(AWebView.shouldOverrideUrlLoadingEvent, (args) => {
-        console.log(`${args.httpMethod} ${args.url}`);
-        if (args.url.includes("google.com")) {
+        if (args.url.includes("leafletjs.com")) {
           args.cancel = true;
         }
       });
