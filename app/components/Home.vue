@@ -33,7 +33,7 @@
 import { AWebView } from "@nativescript-community/ui-webview";
 import * as geolocation from "@nativescript/geolocation";
 import { TokenModel } from "nativescript-ui-autocomplete";
-import { ObservableArray, Http } from "@nativescript/core";
+import { ObservableArray, Http, CoreTypes } from "@nativescript/core";
 
 // https://v6.docs.nativescript.org/vuejs/ns-ui/autocompletetextview/aync-data
 export default {
@@ -43,6 +43,9 @@ export default {
       airports: new Array(),
       webView: null,
     };
+  },
+  created() {
+    geolocation.enableLocationRequest();
   },
   mounted() {
     this.loadData();
@@ -67,7 +70,7 @@ export default {
             })
             .catch((err) => {
               const message = `Error fetching remote data from ${jsonUrl}: ${err.message}`;
-              console.log(message);
+              // console.log(message);
               reject();
             });
         });
@@ -93,7 +96,7 @@ export default {
       view.on(AWebView.loadFinishedEvent, (args) => {
         geolocation
           .getCurrentLocation({
-            desiredAccuracy: 3,
+            desiredAccuracy: CoreTypes.Accuracy.high,
             maximumAge: 5000,
             timeout: 20000,
           })
